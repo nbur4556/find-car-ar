@@ -1,3 +1,4 @@
+//! No longer being used
 import { Scene, PerspectiveCamera, WebGLRenderer } from 'three';
 
 const initializeScene = async (sceneContainer) => {

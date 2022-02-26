@@ -10,7 +10,7 @@ const App = () => {
   return <main>
     <XRButton showScene={showScene} setShowScene={setShowScene} />
 
-    {(showScene) ? <SceneContainer /> : <h1>No Scene</h1>}
+    {(showScene) ? <SceneContainer /> : null}
   </main>
 }
 
