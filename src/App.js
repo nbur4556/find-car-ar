@@ -1,16 +1,17 @@
-import { useEffect, useRef } from 'react';
+import { useState } from 'react';
 
-// Scene
-import initializeScene from './scene/initializeScene';
+// Components
+import SceneContainer from './components/SceneContainer';
+import XRButton from './components/XRButton';
 
 const App = () => {
-  const sceneContainer = useRef(null);
+  const [showScene, setShowScene] = useState(false);
 
-  useEffect(() => {
-    initializeScene(sceneContainer.current);
-  }, []);
+  return <main>
+    <XRButton showScene={showScene} setShowScene={setShowScene} />
 
-  return <main ref={sceneContainer} />
+    {(showScene) ? <SceneContainer /> : <h1>No Scene</h1>}
+  </main>
 }
 
 export default App;
