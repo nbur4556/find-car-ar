@@ -1,16 +1,19 @@
-import { useEffect, useRef } from 'react';
+import { DefaultXRControllers, ARCanvas } from '@react-three/xr';
 
-// Scene
-import initializeScene from '../scene/initializeScene';
+//test
+const Box = () => {
+    return <mesh>
+        <boxBufferGeometry attach="geometry" />
+        <meshLambertMaterial attach="material" color="hotpink" />s
+    </mesh>
+}
 
 const SceneContainer = () => {
-    const sceneContainer = useRef(null);
-
-    useEffect(() => {
-        initializeScene(sceneContainer.current);
-    }, []);
-
-    return <div ref={sceneContainer} />
+    return <ARCanvas>
+        <ambientLight />
+        <Box />
+        <DefaultXRControllers />
+    </ARCanvas>
 }
 
 export default SceneContainer;
