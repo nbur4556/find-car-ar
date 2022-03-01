@@ -1,25 +1,34 @@
-import { useState } from 'react';
+import { createContext, useState } from 'react';
 
 // Components
 import SceneContainer from './components/SceneContainer';
 import LocationButton from './components/LocationButton';
 import PositionDisplay from './components/PositionDisplay';
 
+export const PositionContext = createContext({
+  current: {},
+  setCurrent: () => { },
+  car: {},
+  setCar: () => { }
+});
+
 const App = () => {
-  const [currentPosition, setCurrentPosition] = useState({});
-  const [carPosition, setCarPosition] = useState({});
+  const [current, setCurrent] = useState({});
+  const [car, setCar] = useState({});
 
   return <main>
-    <LocationButton setPosition={setCurrentPosition}>Current Position</LocationButton>
-    <LocationButton setPosition={setCarPosition}>Car Position</LocationButton>
+    <PositionContext.Provider value={{ current, setCurrent, car, setCar }}>
+      <LocationButton setType="setCurrent">Current Position</LocationButton>
+      <LocationButton setType="setCar">Car Position</LocationButton>
 
-    <h3>Current Position</h3>
-    <PositionDisplay position={currentPosition} />
-    <h3>Car Position</h3>
-    <PositionDisplay position={carPosition} />
+      <h3>Current Position</h3>
+      <PositionDisplay position={current} />
+      <h3>Car Position</h3>
+      <PositionDisplay position={car} />
 
-    <SceneContainer />
-  </main>
+      <SceneContainer />
+    </PositionContext.Provider>
+  </main >
 }
 
 export default App;
