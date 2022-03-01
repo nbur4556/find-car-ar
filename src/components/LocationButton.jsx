@@ -1,4 +1,6 @@
-const LocationButton = ({ setPosition }) => {
+const LocationButton = (props) => {
+    const { setPosition } = props;
+
     const getLocation = () => {
         navigator.geolocation.getCurrentPosition(
             (pos) => setPosition({
@@ -14,7 +16,7 @@ const LocationButton = ({ setPosition }) => {
         );
     }
 
-    return <button onClick={getLocation}>Get Location</button>
+    return <button onClick={getLocation}>{props.children}</button>
 }
 
 export default LocationButton;

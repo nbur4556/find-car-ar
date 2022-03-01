@@ -4,33 +4,22 @@ import { useState } from 'react';
 import SceneContainer from './components/SceneContainer';
 import XRButton from './components/XRButton';
 import LocationButton from './components/LocationButton';
+import PositionDisplay from './components/PositionDisplay';
 
 const App = () => {
   const [showScene, setShowScene] = useState(false);
-  const [position, setPosition] = useState({
-    coords: {},
-    timestamp: null,
-    code: null,
-    msg: null
-  });
+  const [currentPosition, setCurrentPosition] = useState({});
+  const [carPosition, setCarPosition] = useState({});
 
   return <main>
     <XRButton showScene={showScene} setShowScene={setShowScene} />
-    <LocationButton setPosition={setPosition} />
+    <LocationButton setPosition={setCurrentPosition}>Current Position</LocationButton>
+    <LocationButton setPosition={setCarPosition}>Car Position</LocationButton>
 
-    {(position.code === 202)
-      //Success Response
-      ? <ul>
-        <li>Lat: {position.coords.latitude}, Lon: {position.coords.longitude}</li>
-        <li>Code: {position.code}</li>
-        <li>Msg: {position.msg}</li>
-        <li>Timestamp: {position.timestamp}</li>
-      </ul>
-      // Error Response
-      : <ul>
-        <li>Code: {position.code}</li>
-        <li>Msg: {position.msg}</li>
-      </ul>}
+    <h3>Current Position</h3>
+    <PositionDisplay position={currentPosition} />
+    <h3>Car Position</h3>
+    <PositionDisplay position={carPosition} />
 
     {(showScene) ? <SceneContainer /> : null}
   </main>
