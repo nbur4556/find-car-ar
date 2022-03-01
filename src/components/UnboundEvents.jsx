@@ -1,9 +1,12 @@
 import { useXREvent } from "@react-three/xr";
+import { getGeolocation } from '../utils';
 
-const UnboundEvents = () => {
+const UnboundEvents = ({ setCarPosition }) => {
     // On Click Screen
     useXREvent('select', () => {
-        console.log('select unbounded');
+        getGeolocation().then(location => {
+            setCarPosition(location);
+        });
     });
 
     return null;

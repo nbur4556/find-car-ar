@@ -19,7 +19,6 @@ const App = () => {
   return <main>
     <PositionContext.Provider value={{ current, setCurrent, car, setCar }}>
       <LocationButton setType="setCurrent">Current Position</LocationButton>
-      <LocationButton setType="setCar">Car Position</LocationButton>
 
       <h3>Current Position</h3>
       <PositionDisplay position={current} />

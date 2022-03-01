@@ -3,7 +3,6 @@ import { PositionContext } from '../App';
 
 const LocationButton = (props) => {
     const position = useContext(PositionContext);
-    console.log(position.setCar);
 
     const getLocation = () => {
         navigator.geolocation.getCurrentPosition(
