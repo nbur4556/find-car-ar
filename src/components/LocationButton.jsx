@@ -1,13 +1,16 @@
-const LocationButton = () => {
+const LocationButton = ({ setPosition }) => {
     const getLocation = () => {
         navigator.geolocation.getCurrentPosition(
-            (position) => {
-                console.log(position);
-            },
-            (err) => {
-                //TODO: Handle on get position errors
-                console.log(err);
-            }
+            (pos) => setPosition({
+                coords: pos.coords,
+                timestamp: pos.timestamp,
+                code: 202,
+                msg: 'Success'
+            }),
+            (err) => setPosition({
+                code: err.code,
+                msg: err.message
+            })
         );
     }
 
