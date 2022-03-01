@@ -1,19 +1,15 @@
 import { DefaultXRControllers, ARCanvas } from '@react-three/xr';
-
-//test
-const Box = () => {
-    return <mesh>
-        <boxBufferGeometry attach="geometry" />
-        <meshLambertMaterial attach="material" color="hotpink" />s
-    </mesh>
-}
+import CarMarker from './CarMarker';
+import UnboundEvents from './UnboundEvents';
 
 const SceneContainer = () => {
     return <ARCanvas>
         <ambientLight />
-        <Box />
+        <CarMarker position={[-5, 0, 0]} />
         <DefaultXRControllers />
-    </ARCanvas>
+        <UnboundEvents />
+    </ARCanvas >
+
 }
 
 export default SceneContainer;
