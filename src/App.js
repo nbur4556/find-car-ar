@@ -1,7 +1,8 @@
-import { createContext, useState } from 'react';
+import { createContext, useState, useEffect } from 'react';
+import { watchGeolocation } from './utils';
 
 // Components
-import SceneContainer from './components/SceneContainer';
+import SceneContainer from './threeComponents/SceneContainer';
 import LocationButton from './components/LocationButton';
 import PositionDisplay from './components/PositionDisplay';
 
@@ -15,6 +16,10 @@ export const PositionContext = createContext({
 const App = () => {
   const [current, setCurrent] = useState({});
   const [car, setCar] = useState({});
+
+  useEffect(() => {
+    watchGeolocation((location) => setCurrent(location));
+  }, []);
 
   return <main>
     <PositionContext.Provider value={{ current, setCurrent, car, setCar }}>

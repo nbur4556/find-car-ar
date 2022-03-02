@@ -12,8 +12,7 @@ const getGeolocation = () => {
                 msg: err.message
             })
         );
-    })
-
+    });
 }
 
 export default getGeolocation;
