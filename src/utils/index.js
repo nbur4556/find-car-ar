@@ -1,4 +1,3 @@
-import getGeolocation from './getGeolocation';
-import watchGeolocation from './watchGeolocation';
+import { getGeolocation, watchGeolocation } from './geolocation';
 
 export { getGeolocation, watchGeolocation };

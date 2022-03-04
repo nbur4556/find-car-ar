@@ -4,7 +4,7 @@ import { getGeolocation } from '../utils';
 const UnboundEvents = ({ setCarPosition }) => {
     // Set Car Location On Click
     useXREvent('select', () => {
-        getGeolocation().then(location => {
+        getGeolocation((location) => {
             setCarPosition(location);
         });
     });
