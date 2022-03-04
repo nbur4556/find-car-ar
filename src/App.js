@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect } from 'react';
-import { watchGeolocation } from './utils';
+import { convertMetersFromLocation, watchGeolocation } from './utils';
 
 // Components
 import SceneContainer from './threeComponents/SceneContainer';
@@ -19,6 +19,8 @@ const App = () => {
 
   useEffect(() => {
     watchGeolocation((location) => setCurrent(location));
+
+    convertMetersFromLocation({ lat: 30.267153, lon: -97.743057 }, { lat: 40.760780, lon: -111.891045 });
   }, []);
 
   return <main>
