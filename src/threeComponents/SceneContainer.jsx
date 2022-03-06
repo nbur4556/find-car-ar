@@ -9,11 +9,17 @@ import UnboundEvents from './UnboundEvents';
 import { PositionContext } from '../App';
 
 const SceneContainer = () => {
-    const { setCar } = useContext(PositionContext);
+    const { current, car, setCar } = useContext(PositionContext);
 
     return <ARCanvas>
         <ambientLight />
-        <CarMarker position={[-5, 0, 0]} />
+
+        {
+            (current.coords && car.coords)
+                ? <CarMarker curCoords={current.coords} carCoords={car.coords} />
+                : null
+        }
+
         <DefaultXRControllers />
         <UnboundEvents setCarPosition={setCar} />
     </ARCanvas >
