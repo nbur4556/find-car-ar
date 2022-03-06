@@ -1,4 +1,4 @@
 import { convertMetersFromLocation } from './conversions';
-import { getGeolocation, watchGeolocation } from './geolocation';
+import { getGeolocation } from './geolocation';
 
-export { convertMetersFromLocation, getGeolocation, watchGeolocation };
+export { convertMetersFromLocation, getGeolocation };
