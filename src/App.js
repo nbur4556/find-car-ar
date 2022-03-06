@@ -13,6 +13,7 @@ export const PositionContext = createContext({
 });
 
 const App = () => {
+  //TODO: Periodicallay update current position
   const [current, setCurrent] = useState({});
   const [car, setCar] = useState({});
 

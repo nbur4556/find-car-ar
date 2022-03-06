@@ -5,7 +5,6 @@ const options = {
 }
 
 export const getGeolocation = (cb) => {
-    //! Navigator will not get current position until leaving and returning to page due to busy watching geolocation
     navigator.geolocation.getCurrentPosition(
         (pos) => {
             cb({
