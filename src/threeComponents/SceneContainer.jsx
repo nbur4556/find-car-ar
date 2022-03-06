@@ -13,7 +13,13 @@ const SceneContainer = () => {
 
     return <ARCanvas>
         <ambientLight />
-        <CarMarker currentP={current} carP={car} />
+
+        {
+            (current.coords && car.coords)
+                ? <CarMarker curCoords={current.coords} carCoords={car.coords} />
+                : null
+        }
+
         <DefaultXRControllers />
         <UnboundEvents setCarPosition={setCar} />
     </ARCanvas >

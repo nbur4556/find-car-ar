@@ -7,8 +7,11 @@ export const convertMetersFromLocation = (coordsA, coordsB) => {
     // Convert to Meters
     const latMeters = Math.abs(latDiff * 111139);
     const lonMeters = Math.abs(lonDiff * 111139);
-
-    // Triangulate Distance
     const distance = Math.sqrt((latMeters * latMeters) + (lonMeters * lonMeters));
-    return distance;
+
+    return {
+        latDirection: (latMeters / (latMeters + lonMeters)),
+        lonDirection: (lonMeters / (latMeters + lonMeters)),
+        distance
+    };
 }

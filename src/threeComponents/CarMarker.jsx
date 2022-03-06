@@ -1,21 +1,18 @@
 import { convertMetersFromLocation } from '../utils';
 
-const CarMarker = ({ currentP, carP }) => {
-    if (currentP.coords && carP.coords) {
-        const distance = convertMetersFromLocation({
-            lat: currentP.coords.latitude,
-            lon: currentP.coords.longitude
-        }, {
-            lat: carP.coords.latitude,
-            lon: carP.coords.longitude
-        });
+const CarMarker = ({ curCoords, carCoords }) => {
+    const d = convertMetersFromLocation({
+        lat: curCoords.latitude + 0.005,
+        lon: curCoords.longitude + 0.01
+    }, {
+        lat: carCoords.latitude,
+        lon: carCoords.longitude
+    });
 
-        console.log(distance);
-    }
+    const xMeters = d.latDirection * d.distance;
+    const yMeters = d.lonDirection * d.distance;
 
-
-
-    return <mesh position={[-5, 0, 0]}>
+    return <mesh position={[xMeters, yMeters, 0]}>
         <boxBufferGeometry attach="geometry" />
         <meshLambertMaterial attach="material" color="hotpink" />s
     </mesh>
