@@ -4,6 +4,7 @@ const PositionDisplay = ({ position }) => {
             //Success Response
             ? <>
                 <li>Lat: {position.coords.latitude}, Lon: {position.coords.longitude}</li>
+                <li>Heading: {position.heading}</li>
                 <li>Code: {position.code}</li>
                 <li>Msg: {position.msg}</li>
                 <li>Timestamp: {position.timestamp}</li>

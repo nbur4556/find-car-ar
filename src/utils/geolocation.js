@@ -7,8 +7,11 @@ const options = {
 export const getGeolocation = (cb) => {
     navigator.geolocation.getCurrentPosition(
         (pos) => {
+            console.log(pos);
+
             cb({
                 coords: pos.coords,
+                heading: pos.coords.heading,
                 timestamp: pos.timestamp,
                 code: 202,
                 msg: 'Success'
